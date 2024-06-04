@@ -2,23 +2,19 @@
 import mongoose from 'mongoose'
 
 const intakeSchema = new mongoose.Schema({
-    // id: {
-    //     type: String,
-    //     required: true
-    // },
-    dato: {
+    date: {
         type: Date,
         required: false
     },
-    brugerID: {
+    userID: {
         type: String,
         required: true
     },
-    fødevarerID: {
+    foodID: {
         type: boolean,
         required: false
     },
-    vægt: {
+    weight: {
         type: Number,
         required: false
     }

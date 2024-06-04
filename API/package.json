@@ -4,16 +4,16 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon ./index.js"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "nodejs": "^0.0.0",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "mongoose": "^8.4.0",
-    "nodemon": "^3.1.2"
+    "nodemon": "^3.1.2",
+    "uuid": "^9.0.1"
   }
 }

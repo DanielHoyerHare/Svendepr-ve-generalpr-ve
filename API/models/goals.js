@@ -2,15 +2,11 @@
 import mongoose from 'mongoose'
 
 const goalSchema = new mongoose.Schema({
-    // id: {
-    //     type: String,
-    //     required: true
-    // },
-    startDato: {
+    startDate: {
         type: Date,
         required: false
     },
-    brugerID: {
+    userID: {
         type: String,
         required: true
     },
@@ -18,19 +14,19 @@ const goalSchema = new mongoose.Schema({
         type: boolean,
         required: false
     },
-    kalorierMål: {
+    calorieGoal: {
         type: Number,
         required: false
     },
-    kulhydraterMål: {
+    carbonhydratesGoal: {
         type: Number,
         required: false
     },
-    proteinMål: {
+    proteinGoal: {
         type: Number,
         required: false
     },
-    fedtMål: {
+    fatGoal: {
         type: Number,
         required: false
     }

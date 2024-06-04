@@ -2,15 +2,11 @@
 import mongoose from 'mongoose'
 
 const foodSchema = new mongoose.Schema({
-    // id: {
-    //     type: String,
-    //     required: true
-    // },
-    stregkode: {
+    barcode: {
         type: String,
         required: false
     },
-    navn: {
+    name: {
         type: String,
         required: false
     },
@@ -18,11 +14,11 @@ const foodSchema = new mongoose.Schema({
         type: boolean,
         required: false
     },
-    kalorier: {
+    calories: {
         type: Number,
         required: false
     },
-    kulhydrater: {
+    carbonhydrates: {
         type: Number,
         required: false
     },
@@ -30,7 +26,7 @@ const foodSchema = new mongoose.Schema({
         type: Number,
         required: false
     },
-    fedt: {
+    fat: {
         type: Number,
         required: false
     }

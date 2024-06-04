@@ -3,6 +3,23 @@ import {v4 as uuidv4} from 'uuid';
 import { User } from "../models/users"
 
 
+
+export const login = async(rq,rs) => {
+    await User.findById(rq.params.id)
+    .then((user) => {
+        if (!user) throw new Error('err');
+        if (user.password != rq.params.hashedPass) return rs.status(401).json({code:401, msg: "Wrong password"});
+        user.password = null;
+        rs.status(200).json({code:200, msg: "Login was successful", user: user});
+    })
+    .catch((error) => {
+        console.log(error);
+        rs.status(500).json({code:500, msg: "Unable to find the contact"});
+    });
+}
+
+
+
 export const getUsers = async (req, res) => {
     try {
         User.find()

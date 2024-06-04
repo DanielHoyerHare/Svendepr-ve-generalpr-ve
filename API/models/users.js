@@ -2,37 +2,59 @@
 import mongoose from 'mongoose'
 
 const userSchema = new mongoose.Schema({
-    // id: {
-    //     type: String,
-    //     required: true
-    // },
     rolle: {
         type: String,
         required: false
     },
-    usersame: {
+    username: {
         type: String,
-        required: false
+        required: [true, "Username is required"],
+        minLength: 3,
+        trim: true,
+        validate: {
+            validator: function(value){
+                const regex = /^[a-zA-ZæøåÆØÅ0-9]*$/;
+                return regex.test(value);
+            },
+            message: "Username can only contain letters and numbers"
+        }
     },
     email: {
         type: String,
-        required: false
+        required: [true, "Email is required"],
+        minLength: 3,
+        unique: true,
+        validate: {
+            validator: function(value){
+                const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return regex.test(value);
+            },
+            message: "Provided email is not valid"
+        }
     },
     password: {
         type: String,
-        required: false
+        required: [true, "Password is required"]
     },
-    alder: {
+    age: {
         type: Number,
-        required: false
+        required: false,
+        default: null
     },
-    vægt: {
+    weight: {
         type: Number,
-        required: false
+        required: false,
+        default: null
     },
-    højde: {
+    height: {
         type: Number,
-        required: false
+        required: false,
+        default: null
+    },
+    admin: {
+        type: Boolean,
+        required: false,
+        default: false
     }
 })
 
