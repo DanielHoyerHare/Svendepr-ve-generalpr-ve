@@ -2,13 +2,17 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
-import Users from './routes/Users.js'
+import Users from './routes/Users.js';
+import Auth from './routes/Auth.js';
+
+process.env.SECRET_KEY = 'test';
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/api/users', Users);
+app.use('/api/auth', Auth);
 
 //Connection to MongoDB through mongooose
 const conString = 'mongodb://localhost:27017/caloriedatabase';

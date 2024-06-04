@@ -1,4 +1,4 @@
-import User from '../models/User.js'
+import User from '../models/User.js';
 
 export const createUser = async (rq,rs) => {
     rq.body.admin = false;
@@ -15,16 +15,16 @@ export const createUser = async (rq,rs) => {
     });
 }
 
-export const login = async(rq,rs) => {
-    await User.findById(rq.params.id)
-    .then((user) => {
-        if (!user) throw new Error('err');
-        if (user.password != rq.params.hashedPass) return rs.status(401).json({code:401, msg: "Wrong password"});
-        user.password = null;
-        rs.status(200).json({code:200, msg: "Login was successful", user: user});
+export const getUsers = async(rq,rs) => {
+    await User.find()
+    .then((users) => {
+
+        if(!users.length) throw new Error('err');
+        console.log(users);
+        rs.status(200).json({code:200, msg: "Found " + users.length + " users", users: users});
     })
     .catch((error) => {
         console.log(error);
-        rs.status(500).json({code:500, msg: "Unable to find the contact"});
+        rs.status(500).json({code:500, msg: "Unable to find any users"});
     });
 }
