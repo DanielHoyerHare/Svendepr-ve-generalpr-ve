@@ -11,7 +11,7 @@ const foodSchema = new mongoose.Schema({
         required: false
     },
     godkendt: {
-        type: boolean,
+        type: Boolean,
         required: false
     },
     calories: {

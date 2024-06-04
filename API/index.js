@@ -14,9 +14,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 
 const dbConnect = async() => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/appDB', {
-            // useNewUrlParser: true,
-            // useUnifiedTopology: true
+        await mongoose.connect('mongodb://0.0.0.0:27017/appDB', {
             autoIndex: true,
         });
         console.log('connected to DB')

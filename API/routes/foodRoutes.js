@@ -1,9 +1,9 @@
 import express from 'express'
-import { getFood, getFood, search, createFood, deleteFood, updateFood } from '../controllers/carController.js'
+import { getFoods, getFood, search, createFood, deleteFood, updateFood } from '../controllers/foodsController.js'
 
 const router = express.Router();
 
-router.get('/', getFood);
+router.get('/', getFoods);
 
 router.get('/search/:id', getFood)
 

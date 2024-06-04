@@ -1,5 +1,5 @@
 import express from 'express'
-import { getGoals, getGoal, search, createGoal, deleteGoal, updateGoal } from '../controllers/carController.js'
+import { getGoals, getGoal, search, createGoal, deleteGoal, updateGoal } from '../controllers/goalController.js'
 
 const router = express.Router();
 

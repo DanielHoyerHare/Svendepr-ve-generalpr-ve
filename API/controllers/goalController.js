@@ -1,6 +1,6 @@
 import {v4 as uuidv4} from 'uuid';
 
-import { Goal } from "../models/goals"
+import { Goal } from "../models/goals.js"
 
 
 export const getGoals = async (req, res) => {

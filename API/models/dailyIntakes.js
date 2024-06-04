@@ -11,7 +11,7 @@ const intakeSchema = new mongoose.Schema({
         required: true
     },
     foodID: {
-        type: boolean,
+        type: String,
         required: false
     },
     weight: {
@@ -20,4 +20,4 @@ const intakeSchema = new mongoose.Schema({
     }
 })
 
-export const Intake = mongoose.model('Intake', intakeSchema)
+export const DailyIntake = mongoose.model('DailyIntake', intakeSchema)

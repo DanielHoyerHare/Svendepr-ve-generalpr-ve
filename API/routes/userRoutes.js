@@ -1,7 +1,11 @@
 import express from 'express'
-import { getUsers, getUser, search, createUser, deleteUser, updateUser } from '../controllers/carController.js'
+import { login, getUsers, getUser, search, createUser, deleteUser, updateUser } from '../controllers/userController.js'
 
 const router = express.Router();
+
+
+router.get('/:id/:hashedPass', login);
+
 
 router.get('/', getUsers);
 

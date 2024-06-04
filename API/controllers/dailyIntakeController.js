@@ -1,6 +1,6 @@
 import {v4 as uuidv4} from 'uuid';
 
-import { DailyIntake } from "../models/dailyIntakes"
+import { DailyIntake } from "../models/dailyIntakes.js"
 
 
 export const getDailyIntakes = async (req, res) => {

@@ -10,10 +10,6 @@ const goalSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    godkendt: {
-        type: boolean,
-        required: false
-    },
     calorieGoal: {
         type: Number,
         required: false
