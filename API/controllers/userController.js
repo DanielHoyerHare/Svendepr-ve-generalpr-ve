@@ -1,39 +1,54 @@
-import {v4 as uuidv4} from 'uuid';
-
+import jwt from 'jsonwebtoken';
 import { User } from "../models/users.js"
 
 
-
-export const login = async(rq,rs) => {
-    await User.findById(rq.params.id)
+export const register = async (rq,rs) => {
+    rq.body.admin = false;
+    await new User(rq.body).save()
     .then((user) => {
-        if (!user) throw new Error('err');
-        if (user.password != rq.params.hashedPass) return rs.status(401).json({code:401, msg: "Wrong password"});
-        user.password = null;
-        rs.status(200).json({code:200, msg: "Login was successful", user: user});
+        console.log(user);
+        const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
+            expiresIn: '1 hour'
+        });
+        rs.status(201).json({ token });
     })
     .catch((error) => {
         console.log(error);
-        rs.status(500).json({code:500, msg: "Unable to find the contact"});
+        if (error.code == 11000) 
+            return rs.status(500).json({code:500, msg: "Email is already used"});
+        rs.status(500).json({code:500, msg: "Unable to create user"});
+    });
+}
+
+export const login = async(rq,rs) => {
+    await User.findOne({username: rq.body.username})
+    .then((user) => {
+        if (!user) throw new Error('err');
+        const passwordMatch = user.comparePassword(rq.body.password);
+        if (!passwordMatch) return rs.status(401).json({code:401, msg: "Wrong password"});
+        const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
+            expiresIn: '1 hour'
+        });
+        rs.status(201).json({ token });
+    })
+    .catch((error) => {
+        console.log(error);
+        rs.status(500).json({code:500, msg: "Unable to find user"});
     });
 }
 
 
 
 export const getUsers = async (req, res) => {
-    try {
-        User.find()
-        .then((users) => {
-            res.status(200).json({users: users})
-        })
-        .catch((error) => {
-            console.log(error)
-            res.status(500).json({msg: "unable to get users"})
-        })
-    } catch (error) {
+    await User.find()
+    .then((users) => {
+        res.status(200).json({users: users})
+    })
+    .catch((error) => {
         console.log(error)
         res.status(500).json({msg: "unable to get users"})
-    }
+    })
+    
 }
 
 export const getUser = async (req, res) => {
@@ -90,22 +105,16 @@ export const search = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
-    try {
-        const user = new User(req.body)
-        await user.save()
-        .then((savedUsers) => {
-            console.log(savedUsers)
-            res.status(201).json({msg: 'user saved', user})
-        })
-        .catch ((error) => {
-            console.log(error)
-            res.status(500).json({msg: 'unable to create new user', user})
-        })
-    } catch (error) {
+    const user = new User(req.body)
+    await user.save()
+    .then((savedUsers) => {
+        console.log(savedUsers)
+        res.status(201).json({msg: 'user saved', user})
+    })
+    .catch ((error) => {
         console.log(error)
-        res.status(500).json({msg: 'unable to save new user'})
-    }
-    
+        res.status(500).json({msg: 'unable to create new user', user})
+    })
 }
 
 export const deleteUser = async (req, res) => {
