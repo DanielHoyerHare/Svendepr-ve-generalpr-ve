@@ -1,5 +1,5 @@
-// import required from 'joi/lib/types/alternatives/index.js'
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
+import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
     rolle: {
@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     },
     username: {
         type: String,
-        required: [true, "Username is required"],
+        required: [true, 'Username is required'],
         minLength: 3,
         trim: true,
         validate: {
@@ -16,25 +16,25 @@ const userSchema = new mongoose.Schema({
                 const regex = /^[a-zA-ZæøåÆØÅ0-9]*$/;
                 return regex.test(value);
             },
-            message: "Username can only contain letters and numbers"
+            message: 'Username can only contain letters and numbers'
         }
     },
     email: {
         type: String,
-        required: [true, "Email is required"],
+        required: [true, 'Email is required'],
         minLength: 3,
         unique: true,
         validate: {
             validator: function(value){
-                const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                const regex = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|.('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return regex.test(value);
             },
-            message: "Provided email is not valid"
+            message: 'Provided email is not valid'
         }
     },
     password: {
         type: String,
-        required: [true, "Password is required"]
+        required: [true, 'Password is required']
     },
     age: {
         type: Number,
@@ -56,6 +56,23 @@ const userSchema = new mongoose.Schema({
         required: false,
         default: false
     }
-})
+});
+
+userSchema.pre('save', async function (next) {
+    const user = this;
+    if (!user.isModified('password')) return next();
+
+    try {
+        const salt = await bcrypt.genSalt();
+        user.password = await bcrypt.hash(user.password, salt);
+        next();
+    } catch (err){
+        return next(err);
+    }
+});
+
+userSchema.methods.comparePassword = async function (password) {
+    return bcrypt.compare(password,this.password)
+}
 
 export const User = mongoose.model('User', userSchema)

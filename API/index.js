@@ -2,6 +2,10 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 
+import Users from './routes/Users.js';
+import Auth from './routes/Auth.js';
+
+process.env.SECRET_KEY = 'test';
 import userRoutes from './routes/userRoutes.js'
 import foodRoutes from './routes/foodRoutes.js'
 import dailyIntakeRoutes from './routes/dailyIntakeRoutes.js'
@@ -11,6 +15,11 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
+
+app.use('/api/users', Users);
+app.use('/api/auth', Auth);
+
+//Connection to MongoDB through mongooose
 
 const dbConnect = async() => {
     try {
