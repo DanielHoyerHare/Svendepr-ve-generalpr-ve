@@ -1,4 +1,3 @@
-// import required from 'joi/lib/types/alternatives/index.js'
 import mongoose from 'mongoose'
 
 const intakeSchema = new mongoose.Schema({

@@ -1,7 +1,8 @@
-import jwt from 'jsonwebtoken';
-import { User } from "../models/users.js"
+import { authenticate } from "../middlewares/Authenticator.js"
+import { User } from "../models/user.js"
 
 export const getUsers = async (req, res) => {
+    console.log(authenticate());
     await User.find()
     .then((users) => {
         res.status(200).json({users: users})
