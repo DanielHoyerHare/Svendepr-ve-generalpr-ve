@@ -1,4 +1,3 @@
-import { authenticate } from "../middlewares/Authenticator.js"
 import User from "../models/user.js"
 
 export const getUsers = async (rq, rs) => {
