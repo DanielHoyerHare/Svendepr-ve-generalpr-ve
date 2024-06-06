@@ -24,15 +24,17 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
             <Button
-                x:Name="Register"
+                x:Name="RegisterBtn"
                 Text="Register" 
+                Command="{Binding RegisterBrugerCommand}"
                 HorizontalOptions="Fill" />
+            
             <Button
-                x:Name="CounterBtn"
+                x:Name="LoginBtn"
                 Text="Login" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
+                Command="{Binding LoginCommand}"
                 HorizontalOptions="Fill" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+    
