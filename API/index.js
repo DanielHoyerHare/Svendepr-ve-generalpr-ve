@@ -2,28 +2,26 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
 
-import Users from './routes/Users.js';
-import Auth from './routes/Auth.js';
-
-process.env.SECRET_KEY = 'test';
+import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js'
 import foodRoutes from './routes/foodRoutes.js'
 import dailyIntakeRoutes from './routes/dailyIntakeRoutes.js'
 import goalRoutes from './routes/goalRoutes.js'
+
+process.env.SECRET_KEY = 'test';
+process.env.MONGODB_URL = 'mongodb://0.0.0.0:27017/appDB';
+process.env.PORT = 5000;
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 
-app.use('/api/users', Users);
-app.use('/api/auth', Auth);
-
 //Connection to MongoDB through mongooose
 
 const dbConnect = async() => {
     try {
-        await mongoose.connect('mongodb://0.0.0.0:27017/appDB', {
+        await mongoose.connect(process.env.MONGODB_URL, {
             autoIndex: true,
         });
         console.log('connected to DB')
@@ -35,11 +33,9 @@ const dbConnect = async() => {
 
 dbConnect();
 
-const PORT = 5000;
+app.listen(process.env.PORT, () => { console.log(`Listening on port: http://localhost:${process.env.PORT}`)})
 
-app.listen(PORT, () => { console.log(`Listening on port: http://localhost:${PORT}`)})
-
-
+app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/foods', foodRoutes);
 app.use('/api/dailyIntakes', dailyIntakeRoutes);
