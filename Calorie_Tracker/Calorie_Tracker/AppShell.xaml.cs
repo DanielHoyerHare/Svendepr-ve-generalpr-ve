@@ -1,13 +1,13 @@
-﻿namespace Calorie_Tracker
-{
-    public partial class AppShell : Shell
-    {
-        public AppShell()
-        {
-            InitializeComponent();
+﻿namespace Calorie_Tracker;
 
-            Routing.RegisterRoute(nameof(RegisterBruger), typeof(RegisterBruger));
-            Routing.RegisterRoute(nameof(Login), typeof(Login));
-        }
+public partial class AppShell : Shell
+{
+    public AppShell()
+    {
+        InitializeComponent();
+
+        Routing.RegisterRoute(nameof(RegisterBruger), typeof(RegisterBruger));
+        Routing.RegisterRoute(nameof(Login), typeof(Login));
+        Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
     }
 }

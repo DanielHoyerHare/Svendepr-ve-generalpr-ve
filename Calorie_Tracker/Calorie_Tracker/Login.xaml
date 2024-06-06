@@ -8,5 +8,10 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <Button
+    x:Name="LoginBtn"
+    Text="Login" 
+    Command="{Binding HomePageCommand}"
+    HorizontalOptions="Fill" /> 
     </VerticalStackLayout>
 </ContentPage>

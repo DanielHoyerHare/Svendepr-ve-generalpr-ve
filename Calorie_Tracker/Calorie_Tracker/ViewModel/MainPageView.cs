@@ -21,7 +21,7 @@ public partial class MainPageView : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(Login));
     }
-
+    
 
 
 
