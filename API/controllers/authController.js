@@ -14,13 +14,15 @@ export const register = async (rq,rs) => {
     .catch((error) => {
         console.log(error);
         if (error.code == 11000) 
-            return rs.status(500).json({code:500, msg: 'Email is already used'});
+            return rs.status(500).json({code:500, msg: 'Username or email is already used'});
         rs.status(500).json({code:500, msg: 'Unable to create user'});
     });
 }
 
 export const login = async(rq,rs) => {
-    await User.findOne({email: rq.body.email})
+    const searcher = {email: rq.body.email}
+    if (!rq.body.email) searcher = {username: rq.body.username}
+    await User.findOne(searcher)
     .then((user) => {
         if (!user) throw new Error('err');
         const passwordMatch = user.comparePassword(rq.body.password);

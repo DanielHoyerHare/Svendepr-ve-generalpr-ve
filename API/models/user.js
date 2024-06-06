@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Username is required'],
         minLength: 3,
         trim: true,
+        unique: true,
         validate: {
             validator: function(value){
                 const regex = /^[a-zA-ZæøåÆØÅ0-9]*$/;
