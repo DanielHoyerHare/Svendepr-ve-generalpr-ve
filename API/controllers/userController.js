@@ -59,12 +59,12 @@ export const search = async (rq, rs) => {
 export const createUser = async (rq, rs) => {
     if (!rq.user.admin) return rs.status(401).json({ message: 'No access' });
     await new User(rq.body).save()
-    .then((savedUsers) => {
+    .then((user) => {
         rs.status(201).json({msg: 'user saved', user})
     })
     .catch ((error) => {
         console.log(error)
-        rs.status(500).json({msg: 'unable to create new user', user})
+        rs.status(500).json({msg: 'unable to create new user'})
     })
 }
 

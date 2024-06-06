@@ -1,14 +1,13 @@
-// import required from 'joi/lib/types/alternatives/index.js'
 import mongoose from 'mongoose'
 
 const goalSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "userProfile"
+    },
     startDate: {
         type: Date,
         required: false
-    },
-    userID: {
-        type: String,
-        required: true
     },
     calorieGoal: {
         type: Number,
