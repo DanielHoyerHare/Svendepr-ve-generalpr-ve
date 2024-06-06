@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using Calorie_Tracker.Pages;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,14 @@ using System.Threading.Tasks;
 
 namespace Calorie_Tracker.ViewModel;
 
-public partial class HomePageView : ObservableObject
+public partial class FoedevareView : ObservableObject
 {
-
 
     [RelayCommand]
     async Task Foedevare()
     {
         await Shell.Current.GoToAsync(nameof(Foedevare));
     }
-
 
 
 

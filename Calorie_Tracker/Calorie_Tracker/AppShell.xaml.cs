@@ -1,4 +1,6 @@
-﻿namespace Calorie_Tracker;
+﻿using Calorie_Tracker.Pages;
+
+namespace Calorie_Tracker;
 
 public partial class AppShell : Shell
 {
@@ -9,5 +11,6 @@ public partial class AppShell : Shell
         Routing.RegisterRoute(nameof(RegisterBruger), typeof(RegisterBruger));
         Routing.RegisterRoute(nameof(Login), typeof(Login));
         Routing.RegisterRoute(nameof(HomePage), typeof(HomePage));
+        Routing.RegisterRoute(nameof(Foedevare), typeof(Foedevare));
     }
 }
