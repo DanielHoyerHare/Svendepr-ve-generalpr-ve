@@ -1,10 +1,6 @@
 import mongoose from 'mongoose'
 
 const goalSchema = new mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "userProfile"
-    },
     startDate: {
         type: Date,
         required: false
@@ -24,7 +20,12 @@ const goalSchema = new mongoose.Schema({
     fatGoal: {
         type: Number,
         required: false
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 })
 
-export const Goal = mongoose.model('Goal', goalSchema)
+const Goal = mongoose.model('Goal', goalSchema);
+export default Goal;

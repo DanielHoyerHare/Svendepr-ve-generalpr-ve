@@ -1,26 +1,38 @@
-import { Goal } from "../models/goal.js"
+import Goal from "../models/goal.js"
 
 
 export const getGoals = async (rq, rs) => {
-    try {
-        Goal.find()
+    // Hvis brugeren er admin sendes alle mål
+    if (rq.user.admin)
+    {
+        Goal.find().sort({startDate: -1}).populate('user')
         .then((goals) => {
             rs.status(200).json({goals: goals})
         })
         .catch((error) => {
             console.log(error)
             rs.status(500).json({msg: "unable to get goals"})
+        });
+    }
+    // Hvis brugeren ikke er admin sendes alle deres tidligere mål
+    else 
+    {
+        Goal.find({user: rq.user.id}).sort({startDate: -1})
+        .then((goals) => {
+            rs.status(200).json({goals: goals})
         })
-    } catch (error) {
-        console.log(error)
-        rs.status(500).json({msg: "unable to get goals"})
+        .catch((error) => {
+            console.log(error)
+            rs.status(500).json({msg: "unable to get goals"})
+        });
     }
 }
 
+// Sender det nuværende mål personen har
 export const getGoal = async (rq, rs) => {
     const userId = rq.params.userId
     if (!(rq.user.admin || rq.user.id == userId)) return rs.status(401).json({ message: 'No access' });
-    Goal.findOne({userId: userId})
+    Goal.findOne({user: userId}).sort({startDate: -1})
     .then((goals) => {
         rs.status(200).json({goal: goals})
     })
@@ -30,60 +42,55 @@ export const getGoal = async (rq, rs) => {
     })
 };
 
-export const search = async (rq, rs) => {
-    try {
-        const searchTerm = rq.query.searchTerm
+// export const search = async (rq, rs) => {
+//     try {
+//         const searchTerm = rq.query.searchTerm
         
-        const searchRegex = new RegExp(searchTerm, "i")
+//         const searchRegex = new RegExp(searchTerm, "i")
         
-        await Goal.find({
-            $or : [
+//         await Goal.find({
+//             $or : [
                 
 
 
-                // Insert
+//                 // Insert
 
 
 
 
-            ]
-        })
-        .then((goals) => {
-            if(goals.lenght){
-                console.log(goals)
-                rs.status(200).json({goals: goals})
-            }
-            else{
-                rs.status(200).json({goals: [], msg: "no goals found"})
-            }
-        })
-        .catch((error) => {
-            console.log(error)
-            rs.status(500).json({msg: "unable to find goal"})
-        })
-    } catch (error) {
-        console.log(error)
-        rs.status(500).json({msg: "unable to get goal"})
-    }
-};
+//             ]
+//         })
+//         .then((goals) => {
+//             if(goals.lenght){
+//                 console.log(goals)
+//                 rs.status(200).json({goals: goals})
+//             }
+//             else{
+//                 rs.status(200).json({goals: [], msg: "no goals found"})
+//             }
+//         })
+//         .catch((error) => {
+//             console.log(error)
+//             rs.status(500).json({msg: "unable to find goal"})
+//         })
+//     } catch (error) {
+//         console.log(error)
+//         rs.status(500).json({msg: "unable to get goal"})
+//     }
+// };
 
 export const createGoal = async (rq, rs) => {
-    try {
-        const goal = new Goal(rq.body)
-        await goal.save()
-        .then((savedGoals) => {
-            console.log(savedGoals)
-            rs.status(201).json({msg: 'goal saved', goal})
-        })
-        .catch ((error) => {
-            console.log(error)
-            rs.status(500).json({msg: 'unable to create new goal', goal})
-        })
-    } catch (error) {
+    if (rq.body.user == null) rq.body.user = rq.user.id;
+    if (!(rq.user.admin || rq.user.id == rq.body.user)) return rs.status(401).json({ message: 'No access' });
+    rq.body.startDate = new Date().getTime();
+    await new Goal(rq.body).save()
+    .then((goal) => {
+        rs.status(201).json({msg: 'goal saved', goal})
+    })
+    .catch ((error) => {
         console.log(error)
-        rs.status(500).json({msg: 'unable to save new goal'})
-    }
-    
+        rs.status(500).json({msg: 'unable to create new goal'})
+    })
 }
 
 export const deleteGoal = async (rq, rs) => {

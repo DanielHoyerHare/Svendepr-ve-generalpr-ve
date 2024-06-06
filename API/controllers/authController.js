@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js'
+import Goal from '../models/goal.js'
 
 export const register = async (rq,rs) => {
     rq.body.admin = false;
@@ -9,6 +10,10 @@ export const register = async (rq,rs) => {
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
             expiresIn: '1 hour'
         });
+        const goal = new Goal({
+            userId: user._id
+        })
+        goal.save();
         rs.status(201).json({ token });
     })
     .catch((error) => {
@@ -20,7 +25,7 @@ export const register = async (rq,rs) => {
 }
 
 export const login = async(rq,rs) => {
-    const searcher = {email: rq.body.email}
+    let searcher = {email: rq.body.email}
     if (!rq.body.email) searcher = {username: rq.body.username}
     await User.findOne(searcher)
     .then((user) => {
