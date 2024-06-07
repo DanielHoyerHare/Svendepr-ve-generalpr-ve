@@ -17,7 +17,11 @@ public partial class HomePageView : ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(Foedevare));
     }
-
+    [RelayCommand]
+    async Task Profile()
+    {
+        await Shell.Current.GoToAsync(nameof(Profile));
+    }
 
 
 

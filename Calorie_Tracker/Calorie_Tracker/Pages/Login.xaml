@@ -4,14 +4,15 @@
              x:Class="Calorie_Tracker.Login"
              Title="Login">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="Login" FontSize="24" HorizontalOptions="Center" />
+
+        <Entry Placeholder="Username" Text="{Binding Username}" />
+
+        <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" />
         <Button
-    x:Name="LoginBtn"
-    Text="Login" 
-    Command="{Binding HomePageCommand}"
-    HorizontalOptions="Fill" /> 
+            x:Name="LoginBtn"
+            Text="Login" 
+            Command="{Binding HomePageCommand}"
+            HorizontalOptions="Fill" /> 
     </VerticalStackLayout>
 </ContentPage>

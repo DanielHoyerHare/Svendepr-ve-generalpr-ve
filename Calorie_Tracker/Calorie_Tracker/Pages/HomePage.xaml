@@ -30,6 +30,9 @@
             <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                 <Image Source="profileicon.png" WidthRequest="30" HeightRequest="30"/>
                 <Label Text="Profile" HorizontalOptions="Center" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ProfileCommand}"/>
+                </StackLayout.GestureRecognizers>
             </StackLayout>
         </StackLayout>
     </Grid>
