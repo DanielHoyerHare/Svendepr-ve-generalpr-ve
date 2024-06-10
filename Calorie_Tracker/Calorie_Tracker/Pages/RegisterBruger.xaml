@@ -6,13 +6,17 @@
     <StackLayout Padding="30" Spacing="10">
         <Label Text="Register" FontSize="24" HorizontalOptions="Center" />
 
-        <Entry Placeholder="Username" Text="{Binding Username}" />
+        <Entry Placeholder="Username" Text="{Binding Bruger.username}" />
 
-        <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email" />
+        <Entry Placeholder="Email" Text="{Binding email}" Keyboard="Email" />
 
-        <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True" />
+        <Entry Placeholder="Password" Text="{Binding password}" IsPassword="True" />
 
         <Entry Placeholder="Confirm Password" Text="{Binding ConfirmPassword}" IsPassword="True" />
+        
+        <Entry Placeholder="Age" Text="{Binding age}" Keyboard="Numeric" />
+        <Entry Placeholder="Weight" Text="{Binding weight}" Keyboard="Numeric" />
+        <Entry Placeholder="Height" Text="{Binding height}" Keyboard="Numeric" />
 
         <Button Text="Register" Command="{Binding RegisterCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}" />
 
