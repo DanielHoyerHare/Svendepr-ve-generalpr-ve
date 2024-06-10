@@ -1,25 +1,14 @@
-﻿namespace Calorie_Tracker
+﻿using Calorie_Tracker.ViewModel;
+
+namespace Calorie_Tracker;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+
+    public MainPage(MainPageView vm)
     {
-        int count = 0;
-
-        public MainPage()
-        {
-            InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
-        }
+        InitializeComponent();
+        BindingContext = vm;
     }
 
 }
