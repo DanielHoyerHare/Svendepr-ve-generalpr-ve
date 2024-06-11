@@ -1,6 +1,7 @@
 ﻿using Calorie_Tracker.Models.ApiModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
@@ -27,6 +28,18 @@ namespace Calorie_Tracker.Services
             }
 
             return await _httpClient.GetFromJsonAsync<Bruger>($"query={id}");
+        }
+        public async Task<ObservableCollection<Food>> getFoodList()
+        {
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<ObservableCollection<Food>>("");
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public async Task<bool> RegisterUserAsync(Bruger bruger)

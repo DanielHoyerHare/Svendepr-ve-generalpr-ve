@@ -4,6 +4,14 @@
              x:Class="Calorie_Tracker.Pages.Foedevare"
              Title="Foedevare">
     <VerticalStackLayout>
-        
+        <SearchBar Placeholder="Search" Text="{Binding SearchText}" />
+
+        <ListView ItemsSource="{Binding FilteredFoods}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Barcode}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
-</ContentPage>
+</ContentPage> 
