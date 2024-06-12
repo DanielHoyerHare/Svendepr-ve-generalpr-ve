@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calorie_Tracker.RegisterBruger"
+             Title="RegisterBruger">
+    <StackLayout Padding="30" Spacing="10">
+        <Label Text="Register" FontSize="24" HorizontalOptions="Center" />
+
+        <Entry Placeholder="Username" Text="{Binding Bruger.username}" />
+
+        <Entry Placeholder="Email" Text="{Binding email}" Keyboard="Email" />
+
+        <Entry Placeholder="Password" Text="{Binding password}" IsPassword="True" />
+
+        <Entry Placeholder="Confirm Password" Text="{Binding ConfirmPassword}" IsPassword="True" />
+        
+        <Entry Placeholder="Age" Text="{Binding age}" Keyboard="Numeric" />
+        <Entry Placeholder="Weight" Text="{Binding weight}" Keyboard="Numeric" />
+        <Entry Placeholder="Height" Text="{Binding height}" Keyboard="Numeric" />
+
+        <Button Text="Register" Command="{Binding RegisterCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}" />
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+
+        <Label Text="{Binding Message}" TextColor="Red" HorizontalOptions="Center" />
+    </StackLayout>
+</ContentPage>
