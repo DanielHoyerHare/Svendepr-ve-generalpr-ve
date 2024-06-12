@@ -98,10 +98,10 @@ namespace Calorie_Tracker.Services
 
         }
 
-        public async Task<Bruger> GetUserInfoAsync(string token)
+        public async Task<Bruger> GetUserInfoAsync(string token,int id)
         {
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            var response = await _httpClient.GetAsync("user");
+            var response = await _httpClient.GetAsync($"user/{id}");
 
             if (response.IsSuccessStatusCode)
             {
