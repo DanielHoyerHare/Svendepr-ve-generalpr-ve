@@ -19,7 +19,7 @@ namespace Calorie_Tracker.Services
         public ApiService()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://localhost:3000/Api/");
+            _httpClient.BaseAddress = new Uri("http://localhost:5000/API/");
         }
 
         public async Task<Bruger> getBrugerInformation(int id)
@@ -35,7 +35,7 @@ namespace Calorie_Tracker.Services
         {
             try
             {
-                return await _httpClient.GetFromJsonAsync<ObservableCollection<Food>>("");
+                return await _httpClient.GetFromJsonAsync<ObservableCollection<Food>>("foods");
             }
             catch (Exception)
             {

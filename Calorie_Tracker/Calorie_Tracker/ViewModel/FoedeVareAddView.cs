@@ -8,4 +8,9 @@ namespace Calorie_Tracker.ViewModel;
 
 public partial class FoedeVareAddView
 {
+
+
+
+
+
 }
