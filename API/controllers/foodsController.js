@@ -1,6 +1,4 @@
-import {v4 as uuidv4} from 'uuid';
-
-import { Food } from "../models/foods.js"
+import { Food } from "../models/food.js"
 
 
 export const getFoods = async (req, res) => {

@@ -7,6 +7,9 @@ public partial class Profile : ContentPage
 	public Profile(ProfileView vm)
 	{
 		InitializeComponent();
-		BindingContext = vm;
-	}
+        BindingContext = vm;
+    }
+    public Profile() : this(new ProfileView())
+    {
+    }
 }

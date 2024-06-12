@@ -1,14 +1,9 @@
-// import required from 'joi/lib/types/alternatives/index.js'
 import mongoose from 'mongoose'
 
 const goalSchema = new mongoose.Schema({
     startDate: {
         type: Date,
         required: false
-    },
-    userID: {
-        type: String,
-        required: true
     },
     calorieGoal: {
         type: Number,
@@ -25,7 +20,12 @@ const goalSchema = new mongoose.Schema({
     fatGoal: {
         type: Number,
         required: false
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 })
 
-export const Goal = mongoose.model('Goal', goalSchema)
+const Goal = mongoose.model('Goal', goalSchema);
+export default Goal;

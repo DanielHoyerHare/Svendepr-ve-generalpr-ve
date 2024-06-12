@@ -11,6 +11,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Username is required'],
         minLength: 3,
         trim: true,
+        unique: true,
         validate: {
             validator: function(value){
                 const regex = /^[a-zA-ZæøåÆØÅ0-9]*$/;
@@ -75,4 +76,5 @@ userSchema.methods.comparePassword = async function (password) {
     return bcrypt.compare(password,this.password)
 }
 
-export const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema);
+export default User;
