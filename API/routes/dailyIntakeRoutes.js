@@ -1,18 +1,19 @@
 import express from 'express'
 import { getDailyIntakes, getDailyIntake, search, createDailyIntake, deleteDailyIntake, updateDailyIntake } from '../controllers/dailyIntakeController.js'
+import { authenticate } from '../middlewares/Authenticator.js';
 
 const router = express.Router();
 
-router.get('/', getDailyIntakes);
+router.get('/', authenticate, getDailyIntakes);
 
-router.get('/search/:id', getDailyIntake)
+router.get('/search/:id', authenticate, getDailyIntake)
 
-router.get('/search', search)
+router.get('/search', authenticate, search)
 
-router.post('/', createDailyIntake)
+router.post('/', authenticate, createDailyIntake)
 
-router.delete('/:id', deleteDailyIntake)
+router.delete('/:id', authenticate, deleteDailyIntake)
 
-router.put('/:id', updateDailyIntake)
+router.put('/:id', authenticate, updateDailyIntake)
 
 export default router;

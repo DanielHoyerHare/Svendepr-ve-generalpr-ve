@@ -1,18 +1,19 @@
 import express from 'express'
 import { getFoods, getFood, search, createFood, deleteFood, updateFood } from '../controllers/foodsController.js'
+import { authenticate } from '../middlewares/Authenticator.js';
 
 const router = express.Router();
 
-router.get('/', getFoods);
+router.get('/', authenticate, getFoods);
 
-router.get('/search/:id', getFood)
+router.get('/search/:id', authenticate, getFood)
 
-router.get('/search', search)
+router.get('/search', authenticate, search)
 
-router.post('/', createFood)
+router.post('/', authenticate, createFood)
 
-router.delete('/:id', deleteFood)
+router.delete('/:id', authenticate, deleteFood)
 
-router.put('/:id', updateFood)
+router.put('/:id', authenticate, updateFood)
 
 export default router;

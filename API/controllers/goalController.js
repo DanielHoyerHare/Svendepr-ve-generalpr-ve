@@ -113,10 +113,9 @@ export const deleteGoal = async (rq, rs) => {
 
 export const updateGoal = async (rq, rs) => {
     try {
-        const id = rq.params.id
-        const updatedGoal = rq.body
+        rq.body.startDate = new Date().getTime();
 
-        await Goal.findOneAndUpdate({_id: id}, updatedGoal, {new: true})
+        await Goal.findOneAndUpdate({_id: rq.params.id}, rq.body, {new: true})
         .then((updatedGoal) => {
             console.log(updatedGoal)
             rs.status(200).json({msg: "goal updated", goal: updatedGoal})
