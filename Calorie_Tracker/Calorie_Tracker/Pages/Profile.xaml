@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Calorie_Tracker.Pages.Profile"
+             Title="Profile">
+    <ContentPage.Resources>
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="BackgroundColor" Value="#00008B" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,20,0,0" />
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,20,0,10" />
+        </Style>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="30" Spacing="10" BackgroundColor="#F0F0F0">
+        <Label Text="Set Calorie Goals" Style="{StaticResource LabelStyle}" />
+
+        <Label Text="Calorie Goal"></Label>
+        <Entry Placeholder="Calorie Goal" Text="{Binding calorieGoal, Mode=TwoWay}" Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
+
+        <Label Text="Carbohydrates Goal"></Label>
+        <Entry Placeholder="Carbohydrates Goal" Text="{Binding carboHydratesGoal, Mode=TwoWay}" Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
+
+        <Label Text="Protein Goal"></Label>
+        <Entry Placeholder="Protein Goal" Text="{Binding proteinGoal, Mode=TwoWay}" Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
+
+        <Label Text="Fat Goal"></Label>
+        <Entry Placeholder="Fat Goal" Text="{Binding fatGoal, Mode=TwoWay}" Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
+        
+
+        <Button Text="Save" Command="{Binding SaveCommand}" Style="{StaticResource ButtonStyle}" />
+    </StackLayout>
+</ContentPage>

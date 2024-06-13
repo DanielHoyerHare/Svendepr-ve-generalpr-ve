@@ -7,11 +7,9 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+            <!--<Image-->
+                <!--HeightRequest="185"
+                Aspect="AspectFit"/>-->
 
             <Label
                 Text="Velkommen til Calorie Tracker!"
@@ -24,15 +22,20 @@
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
             <Button
-                x:Name="Register"
+                x:Name="RegisterBtn"
                 Text="Register" 
-                HorizontalOptions="Fill" />
+                Command="{Binding RegisterBrugerCommand}"
+                HorizontalOptions="Fill" 
+                BackgroundColor="DarkBlue"
+                />
+            
             <Button
-                x:Name="CounterBtn"
+                x:Name="LoginBtn"
                 Text="Login" 
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Fill" />
+                Command="{Binding LoginCommand}"
+                HorizontalOptions="Fill"
+                BackgroundColor="DarkBlue"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
+    
