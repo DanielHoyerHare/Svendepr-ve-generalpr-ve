@@ -10,20 +10,20 @@ namespace Calorie_Tracker.Models.ApiModels;
 class Goal
 {
     [JsonPropertyName("startDate")]
-    public DateTime? StartDate { get; set; }  
+    public DateTime? startDate { get; set; }  
 
     [JsonPropertyName("calorieGoal")]
-    public double? CalorieGoal { get; set; }  
+    public double? calorieGoal { get; set; }  
 
     [JsonPropertyName("carbonhydratesGoal")]
-    public double? CarbohydratesGoal { get; set; } 
+    public double? carbohydratesGoal { get; set; } 
 
     [JsonPropertyName("proteinGoal")]
-    public double? ProteinGoal { get; set; }  
+    public double? proteinGoal { get; set; }  
 
     [JsonPropertyName("fatGoal")]
-    public double? FatGoal { get; set; }  
+    public double? fatGoal { get; set; }  
 
     [JsonPropertyName("user")]
-    public string UserId { get; set; }  
+    public string userId { get; set; }  
 }

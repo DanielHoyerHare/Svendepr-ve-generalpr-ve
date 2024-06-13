@@ -22,25 +22,29 @@ namespace Calorie_Tracker.Services
             _httpClient.BaseAddress = new Uri("http://100.70.102.13:5000/api/"); // HUSK AT SKIFT TIL DIN IPCONFIG IP ELLERS CONNECTION FAILURE!!
         }
 
-        public async Task<Bruger> getBrugerInformation(int id)
-        {
-            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
-            {
-                return null;
-            }
+        //public async Task<Bruger> getBrugerInformation(string token)
+        //{
 
-            return await _httpClient.GetFromJsonAsync<Bruger>($"query={id}");
-        }
-        public async Task<ObservableCollection<Food>> getFoodList()
+        //    return await _httpClient.GetFromJsonAsync<Bruger>("users");
+        //}
+        public async Task<List<Food>> getFoodList()
         {
+            Console.WriteLine("Getting Foodlist");
+
+
+            var foods = await _httpClient.GetFromJsonAsync<List<Food>>("foods");
+
+            Console.WriteLine(foods);
+
             try
             {
-                return await _httpClient.GetFromJsonAsync<ObservableCollection<Food>>("foods");
-            }
-            catch (Exception)
-            {
 
-                throw;
+                return foods;
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"HTTP request failed: {ex.Message}");
+                return null;
             }
         }
 
@@ -86,7 +90,7 @@ namespace Calorie_Tracker.Services
             };
 
             var content = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("login", content);
+            var response = await _httpClient.PostAsync("auth/login", content);
 
 
             if (response.IsSuccessStatusCode)
@@ -98,20 +102,47 @@ namespace Calorie_Tracker.Services
 
         }
 
-        public async Task<Bruger> GetUserInfoAsync(string token,int id)
+        public async Task<Bruger> GetUserInfoAsync(string token,string email)
         {
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-            var response = await _httpClient.GetAsync($"user/{id}");
+
+
+            var searchParams = new Dictionary<string, string>
+            {
+                { "searchTerm", email }
+            };
+
+            var requestUrl = new Uri(_httpClient.BaseAddress, $"users/search?{ToQueryString(searchParams)}");
+
+            var response = await _httpClient.GetAsync(requestUrl);
 
             if (response.IsSuccessStatusCode)
             {
-                return await response.Content.ReadFromJsonAsync<Bruger>();
+                var json = await response.Content.ReadAsStringAsync();
+                var users = System.Text.Json.JsonSerializer.Deserialize<List<Bruger>>(json);
+                return users?.Count > 0 ? users[0] : null;
             }
 
             return null;
         }
 
+        public async Task<bool> RegisterFoodAsync(Food food)
+        {
+            var json = System.Text.Json.JsonSerializer.Serialize(food);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+            var response = await _httpClient.PostAsync("foods", content);
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public async Task<bool> RegisterGoalAsync(Goal goal)
         {
             var json = System.Text.Json.JsonSerializer.Serialize(goal);
@@ -128,6 +159,16 @@ namespace Calorie_Tracker.Services
             {
                 return false;
             }
+        }
+
+        private string ToQueryString(Dictionary<string, string> parameters)
+        {
+            var keyValuePairs = new List<string>();
+            foreach (var kvp in parameters)
+            {
+                keyValuePairs.Add($"{kvp.Key}={Uri.EscapeDataString(kvp.Value)}");
+            }
+            return string.Join("&", keyValuePairs);
         }
     }
 }

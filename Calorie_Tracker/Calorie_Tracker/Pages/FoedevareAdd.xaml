@@ -10,10 +10,10 @@
 
         
         <Entry Placeholder="Name" Text="{Binding Food.Name}" />
-        <Entry Placeholder="Calories" Text="{Binding Food.Calories}" Keyboard="Numeric" />
-        <Entry Placeholder="Carbohydrates" Text="{Binding Food.Carbohydrates}" Keyboard="Numeric" />
-        <Entry Placeholder="Protein" Text="{Binding Food.Protein}" Keyboard="Numeric" />
-        <Entry Placeholder="Fat" Text="{Binding Food.Fat}" Keyboard="Numeric" />
+        <Entry Placeholder="Calories" Text="{Binding Calories}" Keyboard="Numeric" />
+        <Entry Placeholder="Carbohydrates" Text="{Binding Carbohydrates}" Keyboard="Numeric" />
+        <Entry Placeholder="Protein" Text="{Binding Protein}" Keyboard="Numeric" />
+        <Entry Placeholder="Fat" Text="{Binding Fat}" Keyboard="Numeric" />
 
         <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="CenterAndExpand" />
 

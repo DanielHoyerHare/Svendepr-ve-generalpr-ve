@@ -32,8 +32,8 @@ namespace Calorie_Tracker
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<HomePageView>();
 
-            builder.Services.AddSingleton<Foedevare>();
-            builder.Services.AddSingleton<FoedevareView>();
+            builder.Services.AddTransient<Foedevare>();
+            builder.Services.AddTransient<FoedevareView>();
 
             builder.Services.AddTransient<FoedevareAdd>();
             builder.Services.AddTransient<FoedeVareAddView>();
