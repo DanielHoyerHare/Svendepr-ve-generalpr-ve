@@ -42,42 +42,38 @@ export const getGoal = async (rq, rs) => {
     })
 };
 
-// export const search = async (rq, rs) => {
-//     try {
-//         const searchTerm = rq.query.searchTerm
+export const search = async (rq, rs) => {
+    try {
+        const searchTerm = rq.query.searchTerm
         
-//         const searchRegex = new RegExp(searchTerm, "i")
+        const searchRegex = new RegExp(searchTerm, "i")
         
-//         await Goal.find({
-//             $or : [
-                
-
-
-//                 // Insert
-
-
-
-
-//             ]
-//         })
-//         .then((goals) => {
-//             if(goals.lenght){
-//                 console.log(goals)
-//                 rs.status(200).json({goals: goals})
-//             }
-//             else{
-//                 rs.status(200).json({goals: [], msg: "no goals found"})
-//             }
-//         })
-//         .catch((error) => {
-//             console.log(error)
-//             rs.status(500).json({msg: "unable to find goal"})
-//         })
-//     } catch (error) {
-//         console.log(error)
-//         rs.status(500).json({msg: "unable to get goal"})
-//     }
-// };
+        await Goal.find({
+            $or : [
+                {startDate: searchRegex},
+                {calorieGoal: searchRegex},
+                {fatgoal: searchRegex},
+                {carbonhydratesGoal: searchRegex}
+            ]
+        })
+        .then((goals) => {
+            if(goals.lenght){
+                console.log(goals)
+                rs.status(200).json({goals: goals})
+            }
+            else{
+                rs.status(200).json({goals: [], msg: "no goals found"})
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+            rs.status(500).json({msg: "unable to find goal"})
+        })
+    } catch (error) {
+        console.log(error)
+        rs.status(500).json({msg: "unable to get goal"})
+    }
+};
 
 export const createGoal = async (rq, rs) => {
     if (rq.body.user == null) rq.body.user = rq.user.id;

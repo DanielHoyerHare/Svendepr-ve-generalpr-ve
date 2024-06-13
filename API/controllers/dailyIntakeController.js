@@ -42,14 +42,7 @@ export const search = async (req, res) => {
         
         await DailyIntake.find({
             $or : [
-                
-
-
-                // Insert
-
-
-
-
+                {date: searchRegex}
             ]
         })
         .then((dailyIntakes) => {

@@ -42,14 +42,10 @@ export const search = async (req, res) => {
         
         await Food.find({
             $or : [
-                
-
-
-                // Insert
-
-
-
-
+                {name: searchRegex},
+                {calories: searchRegex},
+                {fat: searchRegex},
+                {carbonhydrates: searchRegex}
             ]
         })
         .then((foods) => {
