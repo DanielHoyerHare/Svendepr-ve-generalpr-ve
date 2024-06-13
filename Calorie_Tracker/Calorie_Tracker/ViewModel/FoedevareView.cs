@@ -23,9 +23,9 @@ public partial class FoedevareView : ObservableObject
     private ObservableCollection<Food> FilteredFood { get; set; } = new ObservableCollection<Food>();
 
     [RelayCommand]
-    async Task Foedevare()
+    async Task FoedevareAdd()
     {
-        await Shell.Current.GoToAsync(nameof(Foedevare));
+        await Shell.Current.GoToAsync(nameof(FoedevareAdd));
     }
 
     private async Task LoadFoodList()

@@ -4,7 +4,7 @@
              x:Class="Calorie_Tracker.Pages.Foedevare"
              Title="Foedevare">
     <VerticalStackLayout>
-        <Button Text="Add">
+        <Button Text="Add" Command="{Binding FoedevareAddCommand}">
             
             </Button>
         <Button Text="Scan QR kode">

@@ -2,23 +2,54 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Calorie_Tracker.RegisterBruger"
-             Title="RegisterBruger">
+             >
+
+    <ContentPage.Resources>
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="TextColor" Value="Black" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="BackgroundColor" Value="#00008B" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="HeightRequest" Value="50" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,20,0,0" />
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Margin" Value="0,20,0,10" />
+        </Style>
+    </ContentPage.Resources>
     <StackLayout Padding="30" Spacing="10">
-        <Label Text="Register" FontSize="24" HorizontalOptions="Center" />
+        <Label Text="Register" FontSize="24" HorizontalOptions="Center" Style="{StaticResource LabelStyle}"/>
 
-        <Entry Placeholder="Username" Text="{Binding Bruger.username}" />
+        <Entry Placeholder="Username" Text="{Binding Bruger.username}" Style="{StaticResource EntryStyle}"/>
 
-        <Entry Placeholder="Email" Text="{Binding email}" Keyboard="Email" />
+        <Entry Placeholder="Email" Text="{Binding email}" Keyboard="Email" Style="{StaticResource EntryStyle}"/>
 
-        <Entry Placeholder="Password" Text="{Binding password}" IsPassword="True" />
+        <Entry Placeholder="Password" Text="{Binding password}" IsPassword="True" Style="{StaticResource EntryStyle}"/>
 
-        <Entry Placeholder="Confirm Password" Text="{Binding ConfirmPassword}" IsPassword="True" />
-        
-        <Entry Placeholder="Age" Text="{Binding age}" Keyboard="Numeric" />
-        <Entry Placeholder="Weight" Text="{Binding weight}" Keyboard="Numeric" />
-        <Entry Placeholder="Height" Text="{Binding height}" Keyboard="Numeric" />
+        <Entry Placeholder="Confirm Password" Text="{Binding ConfirmPassword}" IsPassword="True" Style="{StaticResource EntryStyle}"/>
+        <Label Text="Age" FontSize="18"/>
+        <Entry Placeholder="Age" Text="{Binding age}" Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
+        <Label Text="Weight" FontSize="18"/>
+        <Entry Placeholder="Weight" Text="{Binding weight}" Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
+        <Label Text="Height" FontSize="18"/>
+        <Entry Placeholder="Height" Text="{Binding height}" Keyboard="Numeric" Style="{StaticResource EntryStyle}"/>
 
-        <Button Text="Register" Command="{Binding RegisterCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}" />
+        <Button Text="Register" Command="{Binding RegisterCommand}" IsEnabled="{Binding IsBusy, Converter={StaticResource InverseBooleanConverter}}" Style="{StaticResource ButtonStyle}"/>
 
         <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
 
