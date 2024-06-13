@@ -1,5 +1,11 @@
 import express from 'express'
-import { getFoods, getFood, search, createFood, deleteFood, updateFood } from '../controllers/foodsController.js'
+import { 
+    getFoods, 
+    getFood, 
+    search, 
+    createFood, 
+    deleteFood, 
+    updateFood } from '../controllers/foodsController.js'
 
 const router = express.Router();
 

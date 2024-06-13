@@ -1,3 +1,4 @@
+// imports mongoose to use to create schema
 import mongoose from 'mongoose'
 
 const goalSchema = new mongoose.Schema({
@@ -27,5 +28,6 @@ const goalSchema = new mongoose.Schema({
     }
 })
 
+// exports scheme as model to mongoose database and controllers
 const Goal = mongoose.model('Goal', goalSchema);
 export default Goal;

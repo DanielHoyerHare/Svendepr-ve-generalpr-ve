@@ -1,5 +1,7 @@
+// imports mongoose to use to create schema
 import mongoose from 'mongoose'
 
+// creates schema
 const intakeSchema = new mongoose.Schema({
     date: {
         type: Date,
@@ -19,4 +21,5 @@ const intakeSchema = new mongoose.Schema({
     }
 })
 
+// exports scheme as model to mongoose database and controllers
 export const DailyIntake = mongoose.model('DailyIntake', intakeSchema)

@@ -1,6 +1,12 @@
 import express from 'express'
-import { getUsers, getUser, search, createUser, deleteUser, updateUser } from '../controllers/userController.js'
 import { authenticate } from '../middlewares/Authenticator.js';
+import { 
+    getUsers, 
+    getUser, 
+    search, 
+    createUser, 
+    deleteUser, 
+    updateUser } from '../controllers/userController.js'
 
 const router = express.Router();
 

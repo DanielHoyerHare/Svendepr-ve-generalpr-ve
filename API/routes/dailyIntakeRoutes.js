@@ -1,5 +1,11 @@
 import express from 'express'
-import { getDailyIntakes, getDailyIntake, search, createDailyIntake, deleteDailyIntake, updateDailyIntake } from '../controllers/dailyIntakeController.js'
+import { 
+    getDailyIntakes, 
+    getDailyIntake, 
+    search, 
+    createDailyIntake, 
+    deleteDailyIntake, 
+    pdateDailyIntake } from '../controllers/dailyIntakeController.js'
 
 const router = express.Router();
 

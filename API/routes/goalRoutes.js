@@ -1,6 +1,12 @@
 import express from 'express'
-import { getGoals, getGoal, createGoal, deleteGoal, updateGoal } from '../controllers/goalController.js'
 import { authenticate } from '../middlewares/Authenticator.js';
+import { 
+    getGoals, 
+    getGoal, 
+    search,
+    createGoal, 
+    deleteGoal, 
+    updateGoal } from '../controllers/goalController.js'
 
 const router = express.Router();
 
@@ -8,7 +14,7 @@ router.get('/', authenticate, getGoals);
 
 router.get('/:userId', authenticate, getGoal)
 
-// router.get('/search', authenticate, search)
+router.get('/search', authenticate, search)
 
 router.post('/', authenticate, createGoal)
 
