@@ -1,4 +1,4 @@
-﻿using BarcodeScanner.Mobile;
+﻿//using BarcodeScanner.Mobile;
 using Calorie_Tracker.Pages;
 using Calorie_Tracker.ViewModel;
 using Microsoft.Extensions.Logging;
@@ -17,10 +17,11 @@ namespace Calorie_Tracker
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                }).ConfigureMauiHandlers(handlers =>
-                {
-                    handlers.AddBarcodeScannerHandler();
                 });
+                //.ConfigureMauiHandlers(handlers =>
+                //{
+                //    handlers.AddBarcodeScannerHandler();
+                //});
 
 #if DEBUG
     		builder.Logging.AddDebug();

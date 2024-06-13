@@ -19,7 +19,7 @@ namespace Calorie_Tracker.Services
         public ApiService()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://localhost:5000/API/");
+            _httpClient.BaseAddress = new Uri("http://100.70.102.13:5000/api/"); // HUSK AT SKIFT TIL DIN IPCONFIG IP ELLERS CONNECTION FAILURE!!
         }
 
         public async Task<Bruger> getBrugerInformation(int id)
@@ -61,18 +61,18 @@ namespace Calorie_Tracker.Services
 
         public async Task<bool> RegisterUserAsync(Bruger bruger)
         {
-            var json = System.Text.Json.JsonSerializer.Serialize(bruger);
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            var response = await _httpClient.PostAsync("register", content);
-
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                return true;
+                var json = System.Text.Json.JsonSerializer.Serialize(bruger);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("auth/register", content);
+
+                return response.IsSuccessStatusCode;
             }
-            else
+            catch (HttpRequestException ex)
             {
+                Console.WriteLine($"HTTP request failed: {ex.Message}");
                 return false;
             }
         }
@@ -117,7 +117,7 @@ namespace Calorie_Tracker.Services
             var json = System.Text.Json.JsonSerializer.Serialize(goal);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("register", content);
+            var response = await _httpClient.PostAsync("goals", content);
 
 
             if (response.IsSuccessStatusCode)
