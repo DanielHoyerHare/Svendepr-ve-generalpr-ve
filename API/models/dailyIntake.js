@@ -24,4 +24,3 @@ const intakeSchema = new mongoose.Schema({
 // exports scheme as model to mongoose database and controllers
 export const DailyIntake = mongoose.model('DailyIntake', intakeSchema)
 
-

@@ -8,7 +8,7 @@ import {
     search, 
     createDailyIntake, 
     deleteDailyIntake, 
-    pdateDailyIntake 
+    updateDailyIntake 
 } from '../controllers/dailyIntakeController.js'
 
 // creates new router from express module
