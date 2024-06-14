@@ -96,9 +96,30 @@ namespace Calorie_Tracker.Services
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();
+                var bruger = System.Text.Json.JsonSerializer.Deserialize<Bruger>(result);
+                await SecureStorage.SetAsync("userId", bruger.Id);
                 return result;
             }
             return null;
+
+        }
+
+        public async Task<Bruger> GetUserInfoByIdAsync(string token, string userId)
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            try
+            {
+                var response = await _httpClient.GetAsync($"users/{userId}");
+
+                var bruger = await response.Content.ReadFromJsonAsync<Bruger>();
+                return bruger;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
 
