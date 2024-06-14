@@ -28,9 +28,10 @@ export const login = async(rq,rs) => {
     let searcher = {email: rq.body.email}
     if (!rq.body.email) searcher = {username: rq.body.username}
     await User.findOne(searcher)
-    .then((user) => {
+    .then(async (user) => {
         if (!user) throw new Error('err');
-        const passwordMatch = user.comparePassword(rq.body.password);
+        const passwordMatch = await user.comparePassword(rq.body.password);
+        console.log(passwordMatch);
         if (!passwordMatch) return rs.status(401).json({code:401, msg: 'Wrong password'});
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
             expiresIn: '1 hour'
