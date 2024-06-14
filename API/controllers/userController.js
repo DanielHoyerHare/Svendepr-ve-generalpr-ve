@@ -16,7 +16,7 @@ export const getUsers = async (rq, rs) => {
 export const getUser = async (rq, rs) => {
     const id = rq.params.id
     if (!(rq.user.admin || rq.user.id == id)) return rs.status(401).json({ message: 'No access' });
-    User.findById(id).populate('goals')
+    User.findById(id)
     .then((users) => {
         rs.status(200).json({user: users})
     })
