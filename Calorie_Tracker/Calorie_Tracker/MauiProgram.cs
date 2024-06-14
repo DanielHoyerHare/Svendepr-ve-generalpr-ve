@@ -1,7 +1,7 @@
-﻿using BarcodeScanner.Mobile;
-using Calorie_Tracker.Pages;
+﻿using Calorie_Tracker.Pages;
 using Calorie_Tracker.ViewModel;
 using Microsoft.Extensions.Logging;
+using ZXing.Net.Maui.Controls;
 
 
 namespace Calorie_Tracker
@@ -17,10 +17,8 @@ namespace Calorie_Tracker
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                }).ConfigureMauiHandlers(handlers =>
-                {
-                    handlers.AddBarcodeScannerHandler();
-                });
+                }).UseBarcodeReader();
+                
 
 #if DEBUG
     		builder.Logging.AddDebug();
@@ -31,8 +29,8 @@ namespace Calorie_Tracker
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<HomePageView>();
 
-            builder.Services.AddSingleton<Foedevare>();
-            builder.Services.AddSingleton<FoedevareView>();
+            builder.Services.AddTransient<Foedevare>();
+            builder.Services.AddTransient<FoedevareView>();
 
             builder.Services.AddTransient<FoedevareAdd>();
             builder.Services.AddTransient<FoedeVareAddView>();
@@ -48,6 +46,9 @@ namespace Calorie_Tracker
 
             builder.Services.AddTransient<Login>();
             builder.Services.AddTransient<LoginView>();
+
+            builder.Services.AddTransient<BarcodeScannerPage>();
+            builder.Services.AddTransient<BarcodeScannerPageView>();
 
             return builder.Build();
         }

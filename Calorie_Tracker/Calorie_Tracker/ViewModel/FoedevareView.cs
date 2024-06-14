@@ -14,13 +14,19 @@ namespace Calorie_Tracker.ViewModel;
 
 public partial class FoedevareView : ObservableObject
 {
-
+    private ObservableCollection<Food> _filteredFood;
+    private ObservableCollection<Food> FilteredFood
+    {
+        get { return _filteredFood; }
+        set { SetProperty(ref _filteredFood, value); }
+    }
     public FoedevareView()
     {
+        FilteredFood = new ObservableCollection<Food>();
+
         LoadFoodList();
     }
 
-    private ObservableCollection<Food> FilteredFood { get; set; } = new ObservableCollection<Food>();
 
     [RelayCommand]
     async Task FoedevareAdd()
@@ -28,12 +34,27 @@ public partial class FoedevareView : ObservableObject
         await Shell.Current.GoToAsync(nameof(FoedevareAdd));
     }
 
+    [RelayCommand]
+    async Task BarcodeScannerPage()
+    {
+        await Shell.Current.GoToAsync(nameof(BarcodeScannerPage));
+    }
+
     private async Task LoadFoodList()
     {
         try
         {
             ApiService apiService = new ApiService();
-            var foods = await apiService.getFoodList();
+
+            List<Food> foods = new List<Food>();
+
+            //var foods = await apiService.getFoodList();
+
+            Food food1 = new Food();
+            food1.calories = 1;
+            food1.carbohydrates = 1;
+
+            foods.Add(food1);
 
             foreach (var food in foods)
             {
@@ -43,9 +64,9 @@ public partial class FoedevareView : ObservableObject
             }
 
         }
-        catch (Exception)
+        catch (Exception ex)
         {
-
+            Console.WriteLine($"Error loading food list: {ex.Message}");
             throw;
         }
     }
