@@ -168,6 +168,7 @@ export const updateGoal = async (req, res) => {
         
         // sets new goal with body
         const updatedGoal = req.body
+        rq.body.startDate = new Date().getTime();
 
         // updates the goal in database
         await Goal.findOneAndUpdate({_id: id}, updatedGoal, {new: true})
