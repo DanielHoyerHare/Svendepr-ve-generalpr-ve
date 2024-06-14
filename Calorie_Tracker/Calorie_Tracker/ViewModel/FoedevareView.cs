@@ -34,6 +34,12 @@ public partial class FoedevareView : ObservableObject
         await Shell.Current.GoToAsync(nameof(FoedevareAdd));
     }
 
+    [RelayCommand]
+    async Task BarcodeScannerPage()
+    {
+        await Shell.Current.GoToAsync(nameof(BarcodeScannerPage));
+    }
+
     private async Task LoadFoodList()
     {
         try
