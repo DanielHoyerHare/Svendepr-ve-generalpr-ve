@@ -14,7 +14,7 @@ export const register = async (rq,rs) => {
             userId: user._id
         })
         goal.save();
-        rs.status(201).json({ token });
+        rs.status(201).json({ token, userId: user._id });
     })
     .catch((error) => {
         console.log(error);
@@ -35,7 +35,7 @@ export const login = async(rq,rs) => {
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, {
             expiresIn: '1 hour'
         });
-        rs.status(201).json({ token });
+        rs.status(201).json({ token, userId: user._id });
     })
     .catch((error) => {
         console.log(error);
