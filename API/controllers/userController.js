@@ -19,6 +19,7 @@ export const getUsers = async (req, res) => {
     })
     
 }
+
 // exporting get method - gets specific user through Id
 export const getUser = async (req, res) => {
     // gets id from request params
@@ -101,6 +102,7 @@ export const createUser = async (req, res) => {
         res.status(500).json({msg: 'unable to create new user'})
     })
 }
+
 // exporting delete method - deletes a user through id
 export const deleteUser = async (req, res) => {
     // gets user id from request params

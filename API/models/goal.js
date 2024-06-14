@@ -29,5 +29,8 @@ const goalSchema = new mongoose.Schema({
 })
 
 // exports scheme as model to mongoose database and controllers
-const Goal = mongoose.model('Goal', goalSchema);
-export default Goal;
+export const Goal = mongoose.model('Goal', goalSchema);
+ 
+
+
+

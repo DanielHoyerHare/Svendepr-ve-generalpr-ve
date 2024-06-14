@@ -34,3 +34,5 @@ const foodSchema = new mongoose.Schema({
 
 // exports scheme as model to mongoose database and controllers
 export const Food = mongoose.model('Food', foodSchema)
+
+
