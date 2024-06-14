@@ -12,7 +12,7 @@ namespace Calorie_Tracker.ViewModel;
 
 public partial class HomePageView : ObservableObject
 {
-    private ApiService _apiService;
+    
     public HomePageView()
     {
         LoadGoal();
@@ -40,11 +40,13 @@ public partial class HomePageView : ObservableObject
     {
         try
         {
+            ApiService apiService = new ApiService();
 
             var Token = await SecureStorage.GetAsync("auth_token");
 
+            var id = await SecureStorage.GetAsync("userId");
 
-            //_apiService.getBrugerInformation();
+            apiService.GetUserInfoByIdAsync(Token, id);
 
             //int userId = 1; 
             //Goal = await _apiService.GetGoalAsync(userId); 

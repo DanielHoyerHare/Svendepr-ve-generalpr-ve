@@ -10,6 +10,10 @@ namespace Calorie_Tracker.Models.ApiModels;
 
 public class Bruger : INotifyPropertyChanged
 {
+    [JsonPropertyName("userId")]
+    public string Id { get; set; }
+    [JsonPropertyName("token")]
+    public string token { get; set; }
 
     [JsonPropertyName("username")]
     public string Username;
