@@ -33,7 +33,8 @@ const dbConnect = async() => {
 
 dbConnect();
 
-app.listen(process.env.PORT, () => { console.log(`Listening on port: http://localhost:${process.env.PORT}`)})
+app.listen(process.env.PORT, () => 
+    { console.log(`Listening on port: http://localhost:${process.env.PORT}`)})
 
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
