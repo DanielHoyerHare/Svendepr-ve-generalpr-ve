@@ -9,4 +9,8 @@ public partial class FoedevareAdd : ContentPage
 		InitializeComponent();
 		BindingContext = vm;
 	}
+    public FoedevareAdd() : this(new FoedeVareAddView())
+    {
+    }
+
 }

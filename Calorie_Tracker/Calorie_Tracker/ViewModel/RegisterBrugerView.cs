@@ -56,7 +56,7 @@ public partial class RegisterBrugerView : ObservableObject, INotifyPropertyChang
         ApiService apiService = new ApiService();
         bruger.username = username;
         bruger.email = email;
-        bruger.rolle = rolle;
+        bruger.rolle = "user";
         bruger.password = password;
         bruger.age = age;
         bruger.weight = weight;

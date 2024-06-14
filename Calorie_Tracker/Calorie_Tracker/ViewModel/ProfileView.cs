@@ -31,11 +31,11 @@ public partial class ProfileView : ObservableObject
         ApiService apiService = new ApiService();
         Goal goal = new Goal()
         {
-            StartDate = DateTime.Now,
-            CalorieGoal = calorieGoal,
-            CarbohydratesGoal = carboHydratesGoal,
-            ProteinGoal = proteinGoal,
-            FatGoal = fatGoal
+            startDate = DateTime.Now,
+            calorieGoal = calorieGoal,
+            carbohydratesGoal = carboHydratesGoal,
+            proteinGoal = proteinGoal,
+            fatGoal = fatGoal
         };
         await apiService.RegisterGoalAsync(goal);
     }

@@ -7,11 +7,9 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            <Image
-                Source="dotnet_bot.png"
-                HeightRequest="185"
-                Aspect="AspectFit"
-                SemanticProperties.Description="dot net bot in a race car number eight" />
+            <!--<Image-->
+                <!--HeightRequest="185"
+                Aspect="AspectFit"/>-->
 
             <Label
                 Text="Velkommen til Calorie Tracker!"
@@ -27,13 +25,16 @@
                 x:Name="RegisterBtn"
                 Text="Register" 
                 Command="{Binding RegisterBrugerCommand}"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill" 
+                BackgroundColor="DarkBlue"
+                />
             
             <Button
                 x:Name="LoginBtn"
                 Text="Login" 
                 Command="{Binding LoginCommand}"
-                HorizontalOptions="Fill" />
+                HorizontalOptions="Fill"
+                BackgroundColor="DarkBlue"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

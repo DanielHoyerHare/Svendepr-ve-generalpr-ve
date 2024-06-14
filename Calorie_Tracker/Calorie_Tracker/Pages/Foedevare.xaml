@@ -4,10 +4,9 @@
              x:Class="Calorie_Tracker.Pages.Foedevare"
              Title="Foedevare">
     <VerticalStackLayout>
-        <Button Text="Add">
-            
-            </Button>
-        <Button Text="Scan QR kode">
+        <Button Text="Add" Command="{Binding FoedevareAddCommand}">
+        </Button>
+        <Button Text="Scan QR kode" Command="{Binding BarcodeScannerPageCommand}">
             
         </Button>
         <SearchBar Placeholder="Search" Text="{Binding SearchText}" />
@@ -15,7 +14,7 @@
         <ListView ItemsSource="{Binding FilteredFoods}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Barcode}" />
+                    <TextCell Text="{Binding Name}" Detail="{Binding Calories}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

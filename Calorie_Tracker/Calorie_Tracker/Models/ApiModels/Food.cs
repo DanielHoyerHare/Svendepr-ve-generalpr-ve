@@ -10,23 +10,23 @@ namespace Calorie_Tracker.Models.ApiModels;
 class Food
 {
     [JsonPropertyName("barcode")]
-    public string Barcode { get; set; }  
+    public string barcode { get; set; }  
 
     [JsonPropertyName("name")]
-    public string Name { get; set; }  
+    public string name { get; set; }  
 
     [JsonPropertyName("godkendt")]
-    public bool? Godkendt { get; set; }  
+    public bool? godkendt { get; set; }  
 
     [JsonPropertyName("calories")]
-    public double? Calories { get; set; }  
+    public double? calories { get; set; }  
 
     [JsonPropertyName("carbonhydrates")]
-    public double? Carbohydrates { get; set; }  
+    public double? carbohydrates { get; set; }  
 
     [JsonPropertyName("protein")]
-    public double? Protein { get; set; }  
+    public double? protein { get; set; }  
 
     [JsonPropertyName("fat")]
-    public double? Fat{ get; set;}
+    public double? fat{ get; set;}
 }
