@@ -47,6 +47,9 @@ namespace Calorie_Tracker
             builder.Services.AddTransient<Login>();
             builder.Services.AddTransient<LoginView>();
 
+            builder.Services.AddTransient<BarcodeScannerPage>();
+            builder.Services.AddTransient<BarcodeScannerPageView>();
+
             return builder.Build();
         }
     }
