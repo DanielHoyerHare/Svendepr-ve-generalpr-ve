@@ -11,7 +11,7 @@ public partial class BarcodeScannerPage : ContentPage
 
 		barcodeReader.Options = new ZXing.Net.Maui.BarcodeReaderOptions()
 		{
-			Formats = ZXing.Net.Maui.BarcodeFormat.QrCode,
+			Formats = ZXing.Net.Maui.BarcodeFormat.Ean13,
 			AutoRotate = true,
 		};
 	}
