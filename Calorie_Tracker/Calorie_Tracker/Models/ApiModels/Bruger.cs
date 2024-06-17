@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Calorie_Tracker.Models.ApiModels;
 
-public class Bruger : INotifyPropertyChanged
+public class Bruger
 {
     [JsonPropertyName("userId")]
     public string Id { get; set; }
@@ -16,67 +16,29 @@ public class Bruger : INotifyPropertyChanged
     public string token { get; set; }
 
     [JsonPropertyName("username")]
-    public string Username;
-    public string username
-    {
-        get { return Username; }
-        set { Username = value; OnPropertyChanged(nameof(username));}
-    }
+    public string username { get; set; }
 
 
     [JsonPropertyName("email")]
-    string Email;
-    public string email
-    {
-        get { return Email; }
-        set { Email = value; OnPropertyChanged(nameof(email)); }
-    }
+    public string email { get; set; }
 
     [JsonPropertyName("rolle")]
     public string rolle { get; set; }
 
     [JsonPropertyName("password")]
-    string Password;
-    public string password
-    {
-        get { return Password; }
-        set { Password = value; OnPropertyChanged(nameof(password)); }
-    }
+    public string password { get; set; }
 
     [JsonPropertyName("age")]
-    int Age;
-    public int age
-    {
-        get { return Age; }
-        set { Age = value; OnPropertyChanged(nameof(age)); }
-    }
+    public int age { get; set; }
 
     [JsonPropertyName("weight")]
-    int Weight;
-    public int weight
-    {
-        get { return Weight; }
-        set { Weight = value; OnPropertyChanged(nameof(weight)); }
-    }
+    public int weight { get; set; }
 
     [JsonPropertyName("height")]
-    int Height;
-    public int height
-    {
-        get { return Height; }
-        set { Height = value; OnPropertyChanged(nameof(height)); }
-    }
+    public int height { get; set; }
 
     [JsonPropertyName("admin")]
     public bool admin { get; set; }
 
-    public event PropertyChangedEventHandler PropertyChanged;
-    void OnPropertyChanged(string name ) => 
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-
-    public void SetProperty(string prop, string val)
-    {
-
-    }
 
 }

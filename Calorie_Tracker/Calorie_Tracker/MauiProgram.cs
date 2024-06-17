@@ -17,12 +17,14 @@ namespace Calorie_Tracker
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                }).UseBarcodeReader();
-                
+                }).UseBarcodeReader(); // Enable barcode reader functionality
+
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
+
+            // Register Maui pages and their corresponding view models as services
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainPageView>();
 

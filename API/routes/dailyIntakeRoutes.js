@@ -1,5 +1,5 @@
 import express from 'express'
-import { getDailyIntakes, getDailyIntake, search, createDailyIntake, deleteDailyIntake, updateDailyIntake } from '../controllers/dailyIntakeController.js'
+import { getDailyIntakes, getDailyIntake, search, createDailyIntake, deleteDailyIntake, updateDailyIntake, searchByUserID } from '../controllers/dailyIntakeController.js'
 import { authenticate } from '../middlewares/Authenticator.js';
 
 const router = express.Router();
@@ -7,6 +7,8 @@ const router = express.Router();
 router.get('/', authenticate, getDailyIntakes);
 
 router.get('/search/:id', authenticate, getDailyIntake)
+
+router.get('/search/user/:userID', authenticate, searchByUserID)
 
 router.get('/search', authenticate, search)
 

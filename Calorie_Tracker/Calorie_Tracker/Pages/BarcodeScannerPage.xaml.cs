@@ -26,5 +26,8 @@ public partial class BarcodeScannerPage : ContentPage
 		{
 			await DisplayAlert("Barcode Detected", first.Value, "Ok");
 		});
+
+        Shell.Current.GoToAsync(nameof(FoedevareAdd));
+
     }
 }

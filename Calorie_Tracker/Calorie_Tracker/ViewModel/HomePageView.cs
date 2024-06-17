@@ -12,49 +12,74 @@ namespace Calorie_Tracker.ViewModel;
 
 public partial class HomePageView : ObservableObject
 {
-    
+    // Constructor that calls the LoadGoal method to initialize goal data
     public HomePageView()
     {
         LoadGoal();
     }
 
+    // Command for navigating to the Foedevare page
     [RelayCommand]
     async Task Foedevare()
     {
         await Shell.Current.GoToAsync(nameof(Foedevare));
     }
+
+    // Command for navigating to the Profile page
     [RelayCommand]
     async Task Profile()
     {
         await Shell.Current.GoToAsync(nameof(Profile));
     }
 
+    // Backing field for the Goal property
     private Goal _goal;
-    private Goal Goal
+
+    // Property for storing goal data, with notification support
+    public Goal Goal
     {
         get => _goal;
         set => SetProperty(ref _goal, value);
     }
 
+    private DailyIntake _dailyIntake;
+
+    public DailyIntake CurrentIntake
+    {
+        get => _dailyIntake;
+        set => SetProperty(ref _dailyIntake, value);
+    }
+
+
+    // Method to load the user's goal data from the API
     public async Task LoadGoal()
     {
         try
         {
+            // Create an instance of ApiService
             ApiService apiService = new ApiService();
 
-            var Token = await SecureStorage.GetAsync("auth_token");
-
+            // Retrieve the token and userId from secure storage
+            var token = await SecureStorage.GetAsync("auth_token");
             var id = await SecureStorage.GetAsync("userId");
 
-            apiService.GetUserInfoByIdAsync(Token, id);
+            // Get user information using the API service
+            Goal = await apiService.GetUserGoalByIdAsync(token, id);
 
-            //int userId = 1; 
-            //Goal = await _apiService.GetGoalAsync(userId); 
+            var intake = await apiService.GetDailyIntakeAsync(token, id);
+
+            
+
+
         }
         catch (Exception ex)
         {
+            // Log any exception that occurs during the process
             Console.WriteLine($"Failed to load goal: {ex.Message}");
         }
-    }
 
+        
+
+
+    }
 }

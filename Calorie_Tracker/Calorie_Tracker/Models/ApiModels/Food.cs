@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Calorie_Tracker.Models.ApiModels;
 
-class Food
+public class Food
 {
+    [JsonPropertyName("_id")]
+    public string _id { get; set; }
+
     [JsonPropertyName("barcode")]
     public string barcode { get; set; }  
 
@@ -22,7 +25,7 @@ class Food
     public double? calories { get; set; }  
 
     [JsonPropertyName("carbonhydrates")]
-    public double? carbohydrates { get; set; }  
+    public double? carbonhydrates { get; set; }  
 
     [JsonPropertyName("protein")]
     public double? protein { get; set; }  
