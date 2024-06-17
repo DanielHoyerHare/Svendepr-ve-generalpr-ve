@@ -42,9 +42,9 @@ public partial class HomePageView : ObservableObject
         set => SetProperty(ref _goal, value);
     }
 
-    private DailyIntake _dailyIntake;
+    private double? _dailyIntake;
 
-    public DailyIntake CurrentIntake
+    public double? CurrentIntake
     {
         get => _dailyIntake;
         set => SetProperty(ref _dailyIntake, value);
@@ -68,7 +68,7 @@ public partial class HomePageView : ObservableObject
 
             var intake = await apiService.GetDailyIntakeAsync(token, id);
 
-            
+            if (intake != null) CurrentIntake = intake;
 
 
         }

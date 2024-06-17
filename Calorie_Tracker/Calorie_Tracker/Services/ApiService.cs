@@ -23,7 +23,7 @@ namespace Calorie_Tracker.Services
         public ApiService()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://100.70.102.13:5000/api/"); // Replace with your own IP address
+            _httpClient.BaseAddress = new Uri("http://192.168.0.200:5000/api/"); // Replace with your own IP address
         }
 
         // Method to fetch list of foods from API asynchronously
@@ -153,6 +153,9 @@ namespace Calorie_Tracker.Services
         // Method to register a new food item asynchronously
         public async Task<bool> RegisterFoodAsync(Food food)
         {
+            var token = await SecureStorage.GetAsync("auth_token");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
             var json = System.Text.Json.JsonSerializer.Serialize(food);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -234,14 +237,16 @@ namespace Calorie_Tracker.Services
 
             var contentresponse = await response.Content.ReadAsStringAsync();
 
-            DailyIntakeResponseList intake = JsonConvert.DeserializeObject<DailyIntakeResponseList>(contentresponse);
+
+            var intake = JsonConvert.DeserializeObject<DailyIntakeResponseList>(contentresponse);
+
 
             double? calories = 0;
 
             foreach (var item in intake.dailyIntake)
             {
                 Food food = await GetFoodByIdAsync(token,item.FoodID);
-                calories += food.calories * item.Weight;
+                calories += food.calories * item.Weight / 100;
             }
 
             return calories;
