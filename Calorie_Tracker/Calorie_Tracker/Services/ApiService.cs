@@ -23,7 +23,7 @@ namespace Calorie_Tracker.Services
         public ApiService()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://192.168.0.200:5000/api/"); // Replace with your own IP address
+            _httpClient.BaseAddress = new Uri("http://192.168.1.5:5000/api/"); // Replace with your own IP address
         }
 
         // Method to fetch list of foods from API asynchronously

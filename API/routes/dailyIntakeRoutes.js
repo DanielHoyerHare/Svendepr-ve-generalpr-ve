@@ -1,21 +1,33 @@
+// importing express module
 import express from 'express'
-import { getDailyIntakes, getDailyIntake, search, createDailyIntake, deleteDailyIntake, updateDailyIntake, searchByUserID } from '../controllers/dailyIntakeController.js'
+
+// importing controllers
+import { 
+    getDailyIntakes, 
+    getDailyIntake, 
+    search, 
+    createDailyIntake, 
+    deleteDailyIntake, 
+    updateDailyIntake,
+    searchByUserID
+} from '../controllers/dailyIntakeController.js'
 import { authenticate } from '../middlewares/Authenticator.js';
 
+// creates new router from express module
 const router = express.Router();
 
+// defining routes
 router.get('/', authenticate, getDailyIntakes);
-
 router.get('/search/:id', authenticate, getDailyIntake)
 
 router.get('/search/user/:userID', authenticate, searchByUserID)
 
 router.get('/search', authenticate, search)
-
 router.post('/', authenticate, createDailyIntake)
-
 router.delete('/:id', authenticate, deleteDailyIntake)
-
 router.put('/:id', authenticate, updateDailyIntake)
 
+// exports router as default
 export default router;
+
+

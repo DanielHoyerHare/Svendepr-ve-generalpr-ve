@@ -1,18 +1,17 @@
+// imports mongoose to use to create schema
 import mongoose from "mongoose";
+
+// imports bcrypt to encrypt password
 import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema({
-    rolle: {
-        type: String,
-        required: false
-    },
     username: {
         type: String,
-        required: [true, 'Username is required'],
-        minLength: 3,
-        trim: true,
-        unique: true,
+        required: [true, 'Username is required'], // username is required
+        minLength: 3, // sets minimun username lenght to 3 characters
+        unique: true, // makes sure username is unique
         validate: {
+            // validate to make sure username is containing correct characters
             validator: function(value){
                 const regex = /^[a-zA-ZæøåÆØÅ0-9]*$/;
                 return regex.test(value);
@@ -22,10 +21,11 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: [true, 'Email is required'],
-        minLength: 3,
-        unique: true,
+        required: [true, 'Email is required'], // email is required
+        minLength: 6, // makes sure email is the right minimun lenght ('x@x.xx)
+        unique: true, // makes sure email is unique
         validate: {
+            // validate to make sure email is containing correct characters
             validator: function(value){
                 const regex = /^(([^<>()[\]\\.,;:\s@']+(\.[^<>()[\]\\.,;:\s@']+)*)|.('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return regex.test(value);
@@ -54,8 +54,8 @@ const userSchema = new mongoose.Schema({
     },
     admin: {
         type: Boolean,
-        required: false,
-        default: false
+        required: true, // true because user either is admin or not
+        default: false // defaults to false as every new user cannot be admin right away
     }
 });
 
@@ -76,5 +76,7 @@ userSchema.methods.comparePassword = async function (password) {
     return bcrypt.compare(password,this.password)
 }
 
-const User = mongoose.model('User', userSchema);
+// exports scheme as model to mongoose database and controllers
+const User = mongoose.model('User', userSchema)
 export default User;
+
