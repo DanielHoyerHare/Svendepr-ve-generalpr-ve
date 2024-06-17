@@ -109,6 +109,25 @@ export const deleteDailyIntake = async (req, res) => {
     }
 }
 
+export const searchByUserID = async (req, res) => {
+    try {
+        const userID = req.params.userID;
+
+        // Search for daily intake records by userID
+        const dailyIntakes = await DailyIntake.find({ userID });
+
+        if (dailyIntakes.length > 0) {
+            res.status(200).json({ dailyIntakes });
+        } else {
+            res.status(200).json({ dailyIntakes: [], msg: "No dailyIntakes found for this userID" });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: "Unable to find dailyIntakes" });
+    }
+};
+
+
 // exporting update method - updates a dailyintake through id
 export const updateDailyIntake = async (req, res) => {
     try {

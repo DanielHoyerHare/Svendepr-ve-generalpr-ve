@@ -13,6 +13,7 @@ public partial class BarcodeScannerPage : ContentPage
 		{
 			Formats = ZXing.Net.Maui.BarcodeFormat.Ean13,
 			AutoRotate = true,
+			Multiple = false
 		};
 	}
 
@@ -25,5 +26,8 @@ public partial class BarcodeScannerPage : ContentPage
 		{
 			await DisplayAlert("Barcode Detected", first.Value, "Ok");
 		});
+
+        Shell.Current.GoToAsync(nameof(FoedevareAdd));
+
     }
 }

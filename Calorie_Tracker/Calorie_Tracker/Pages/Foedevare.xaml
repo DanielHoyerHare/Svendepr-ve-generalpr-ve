@@ -1,22 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Calorie_Tracker.ViewModel"
              x:Class="Calorie_Tracker.Pages.Foedevare"
              Title="Foedevare">
-    <VerticalStackLayout>
-        <Button Text="Add" Command="{Binding FoedevareAddCommand}">
-        </Button>
-        <Button Text="Scan QR kode" Command="{Binding BarcodeScannerPageCommand}">
-            
-        </Button>
-        <SearchBar Placeholder="Search" Text="{Binding SearchText}" />
+    <ContentPage.BindingContext>
+        <local:FoedevareView />
+    </ContentPage.BindingContext>
 
-        <ListView ItemsSource="{Binding FilteredFoods}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}" Detail="{Binding Calories}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </VerticalStackLayout>
+    <ScrollView>
+        <StackLayout>
+            <Button Text="Add" Command="{Binding FoedevareAddCommand}" />
+
+            <Button Text="Scan QR kode" Command="{Binding BarcodeScannerPageCommand}" />
+
+            <SearchBar Placeholder="Search" Text="{Binding SearchText}" />
+
+            <ListView ItemsSource="{Binding FilteredFoods}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem
+                                            Text="Add to daily"
+                                            BackgroundColor="LightGreen"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:FoedevareView}}, Path=AddToDailyCommand}" CommandParameter="{Binding .}" />
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+
+                                <Grid Padding="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Vertical" Padding="10">
+                                        <Label Text="{Binding name}" FontAttributes="Bold" />
+                                        <Label Text="{Binding calories}" />
+                                    </StackLayout>
+                                </Grid>
+                            </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
 </ContentPage> 

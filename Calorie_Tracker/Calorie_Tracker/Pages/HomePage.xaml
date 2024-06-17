@@ -17,13 +17,13 @@
             <Grid ColumnDefinitions="*,*" Padding="10">
                 <StackLayout Orientation="Vertical" Padding="10">
                     <Label Text="Calorie Goal" FontAttributes="Bold" />
-                    <Label x:Name="calorieGoalLabel" Text="2000 kcal" FontSize="Large" />
+                    <Label x:Name="calorieGoalLabel" Text="{Binding Goal.calorieGoal}" FontSize="Large" />
                 </StackLayout>
             </Grid>
             <Grid ColumnDefinitions="*,*" Padding="10">
                 <StackLayout Orientation="Vertical" Padding="10">
                     <Label Text="Current Intake" FontAttributes="Bold" />
-                    <Label x:Name="currentIntakeLabel" Text="0 kcal" FontSize="Large" />
+                    <Label x:Name="currentIntakeLabel" Text="{Binding CurrentIntake}" FontSize="Large" />
                 </StackLayout>
             </Grid>
         </StackLayout>
