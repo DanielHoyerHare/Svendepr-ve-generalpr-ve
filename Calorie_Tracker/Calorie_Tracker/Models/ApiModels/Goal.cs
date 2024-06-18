@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Calorie_Tracker.Models.ApiModels;
 
-class Goal
+public class Goal
 {
     [JsonPropertyName("startDate")]
     public DateTime? startDate { get; set; }  

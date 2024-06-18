@@ -33,6 +33,11 @@ const userSchema = new mongoose.Schema({
             message: 'Provided email is not valid'
         }
     },
+    rolle: {
+        type: String,
+        required: false,
+        default: null
+    },
     password: {
         type: String,
         required: [true, 'Password is required']

@@ -10,12 +10,15 @@ public partial class MainPageView : ObservableObject
     {
         
     }
-
+    // Command to navigate to the registration page.
+    // Used for registering a new user.
     [RelayCommand]
     async Task RegisterBruger()
     {
         await Shell.Current.GoToAsync(nameof(RegisterBruger));
     }
+    // Command to navigate to the login page.
+    // Used for logging in an existing user.
     [RelayCommand]
     async Task Login()
     {

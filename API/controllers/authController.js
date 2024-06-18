@@ -64,7 +64,7 @@ export const login = async (rq, rs) => {
             });
 
             // sending the token back to the client with a 201 status code
-            rs.status(201).json({ token });
+            rs.status(201).json({ token, userId: user._id });
         })
         .catch((error) => {
             console.log(error);  // Logging the error to the console

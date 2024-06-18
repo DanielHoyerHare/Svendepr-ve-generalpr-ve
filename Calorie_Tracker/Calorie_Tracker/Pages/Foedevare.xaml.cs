@@ -8,5 +8,5 @@ public partial class Foedevare : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = vm;
-	}
+    }
 }

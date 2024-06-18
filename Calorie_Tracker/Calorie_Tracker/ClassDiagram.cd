@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Calorie_Tracker.Models.ApiModels.Bruger" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAQAQgAAAAAAEAAAFAAAAgAAAAAgAAAAA=</HashCode>
+      <FileName>Models\ApiModels\Bruger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.Models.ApiModels.DailyIntake">
+    <Position X="6" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAQCAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ApiModels\DailyIntake.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.Models.ApiModels.Food">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAQAAAAAAAAAAAAAAAAAAAAAEAAAAABCAACAAAAA=</HashCode>
+      <FileName>Models\ApiModels\Food.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.Models.ApiModels.Goal">
+    <Position X="6" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQAAAAAAAAACAAAgAAAAAAACAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Models\ApiModels\Goal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.Pages.BarcodeScannerPage">
+    <Position X="14.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\BarcodeScannerPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.Pages.Foedevare">
+    <Position X="13" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\Foedevare.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.Pages.FoedevareAdd">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\FoedevareAdd.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.Pages.Profile">
+    <Position X="16.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\Profile.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.HomePage">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\HomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.Login">
+    <Position X="14.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\Login.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.RegisterBruger">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\RegisterBruger.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.MainApplication">
+    <Position X="18.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Platforms\Android\MainApplication.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.App">
+    <Position X="18.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.AppShell">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AppShell.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.InverseBooleanConverter" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InverseBooleanConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Calorie_Tracker.MainPage">
+    <Position X="13" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.MauiProgram">
+    <Position X="14.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MauiProgram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.Services.ApiService">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoAAAEAAAAAAAAAAABgAAACAAAAAAAAAAAACAAAIAAA=</HashCode>
+      <FileName>Services\ApiService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.ViewModel.BarcodeScannerPageView">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\BarcodeScannerPageView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.ViewModel.FoedeVareAddView">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAIAAgAAAAAAAAAAAAAQAAAAAAIAAAAAAAAAEAAA=</HashCode>
+      <FileName>ViewModel\FoedeVareAddView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.ViewModel.FoedevareView">
+    <Position X="11.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAABAAAAIAAAAAAAAAAABAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\FoedevareView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.ViewModel.HomePageView">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAIAAAAIAAACAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\HomePageView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.ViewModel.LoginView">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACAAAAAAAAAAAAAAAAAAAAADAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\LoginView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.ViewModel.MainPageView">
+    <Position X="9.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ViewModel\MainPageView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.ViewModel.ProfileView">
+    <Position X="11.25" Y="2.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAIQAAAAAAAAACAAAgAAAAAAACAAAAAAAAAQEAAA=</HashCode>
+      <FileName>ViewModel\ProfileView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Calorie_Tracker.ViewModel.RegisterBrugerView" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAQgQACAAAEAgABAAACgAAAAAgAAAAA=</HashCode>
+      <FileName>ViewModel\RegisterBrugerView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.21" Collapsed="true" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
