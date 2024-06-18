@@ -16,7 +16,7 @@ export const getFoods = async (req, res) => {
     }
 }
 
-// exporting get method - gets specific dailyintake through id
+// exporting get method - gets specific food through id
 export const getFood = async (req, res) => {
     try {
         const id = req.params.id
@@ -32,13 +32,13 @@ export const getFood = async (req, res) => {
     }
 };
 
-// exporting search method - gets dailyintakes that match certain criterias
+// exporting search method - gets foods that match certain criterias
 export const search = async (req, res) => {
     try {
         // creates search term from the request query
         const searchTerm = req.query.searchTerm
         
-        // creates regex for search
+        // creates regex for search ("i" for case insensitive)
         const searchRegex = new RegExp(searchTerm, "i")
         
         // specifies criterias to search for
@@ -52,7 +52,7 @@ export const search = async (req, res) => {
             ]
         })
         .then((foods) => {
-            if(foods.lenght){
+            if(foods.lenght > 0){
                 // logs and returns the foods that match
                 console.log(foods)
                 res.status(200).json({foods: foods})
@@ -69,7 +69,7 @@ export const search = async (req, res) => {
     }
 };
 
-// exporting create method - creates new dailyintake
+// exporting create method - creates new food
 export const createFood = async (req, res) => {
     try {
         // creates a food from food body
@@ -80,7 +80,7 @@ export const createFood = async (req, res) => {
         .then((savedFoods) => {
             // logs and returns the created food
             console.log(savedFoods)
-            res.status(201).json({msg: 'food saved', food})
+            res.status(201).json({msg: 'food saved', savedFoods})
         })
     } catch (error) {
         // logs and returns status 500 if error -> food not created
@@ -90,7 +90,7 @@ export const createFood = async (req, res) => {
     
 }
 
-// exporting delete method - deletes a dailyintake through id
+// exporting delete method - deletes a food through id
 export const deleteFood = async (req, res) => {
     try {
         // gets id from params
@@ -111,7 +111,7 @@ export const deleteFood = async (req, res) => {
     }
 }
 
-// exporting update method - updates a dailyintake through id
+// exporting update method - updates a food through id
 export const updateFood = async (req, res) => {
     try {
         // gets id from params

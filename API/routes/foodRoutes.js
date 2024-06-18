@@ -15,7 +15,7 @@ import { authenticate } from '../middlewares/Authenticator.js';
 // creates new router from express module
 const router = express.Router();
 
-// defining post routes
+// defining routes
 router.get('/', authenticate, getFoods);
 router.get('/search/:id', authenticate, getFood)
 router.get('/search', authenticate, search)

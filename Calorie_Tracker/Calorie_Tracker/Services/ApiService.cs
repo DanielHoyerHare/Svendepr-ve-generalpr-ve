@@ -19,7 +19,7 @@ namespace Calorie_Tracker.Services
         public ApiService()
         {
             _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri("http://192.168.1.5:5000/api/"); // HUSK AT SKIFT TIL DIN IPCONFIG IP ELLERS CONNECTION FAILURE!!
+            _httpClient.BaseAddress = new Uri("http://172.20.10.3:5000/api/"); // HUSK AT SKIFT TIL DIN IPCONFIG IP ELLERS CONNECTION FAILURE!!
         }
 
         //public async Task<Bruger> getBrugerInformation(string token)
